@@ -1,0 +1,296 @@
+local slot = fruitslot -- Fruit Slot
+local wantedfruits = fruits -- Fruit Name
+local wantedrarity = rarity -- Fruit Rarity (Common,Uncommon,Rare,Epic,Legendary,Mythic)
+webhookslink = "https://discord.com/api/webhooks/1109959399998496869/U9pnZUkvZ8wQ1Dbdo66YyFNXO3fXZ0ul8FN3TLqpYyMChFCckTjic9dSPekj4p8jjJ6A"
+
+local commonfruits = {"Barrier","Chop","Sand"}
+local uncommonfruits = {"Smoke","Rubber","Gas","Falcon"}
+local rarefruits = {"Bomb","Ice","Darkness"}
+local epicfruits = {"Light","Flame","Paw","Magma"}
+local legendaryfruits = {"Quake","Magnet","Gravity","Phoenix","TSRubber"}
+local mythicalfruits = {"Leopard","Dough","Dragon","Lightning"}
+local originalgem = (game.Players.LocalPlayer["MAIN_DATA"].Gems.Value)
+local username = game:GetService("Players").LocalPlayer.Name
+
+for i,v in pairs(getconnections(game.Players.LocalPlayer.Idled)) do
+    v:Disable()
+end
+
+function table_contains(tbl, x)
+    found = false
+    for _, v in pairs(tbl) do
+        if v == x then 
+            found = true 
+        end
+    end
+    return found
+end
+
+for k, v in pairs(wantedrarity) do 
+    if v == ("Mythic") then
+        for _,v in ipairs(mythicalfruits) do
+            table.insert(wantedfruits, v)
+            end
+    elseif v == ("Legendary") then
+        for _,v in ipairs(legendaryfruits) do
+            table.insert(wantedfruits, v)
+            end   
+    elseif v == ("Epic") then
+        for _,v in ipairs(epicfruits) do
+            table.insert(wantedfruits, v)
+            end   
+    elseif v == ("Rare") then
+        for _,v in ipairs(rarefruits) do
+            table.insert(wantedfruits, v)
+            end
+    elseif v == ("Uncommon") then
+        for _,v in ipairs(uncommonfruits) do
+            table.insert(wantedfruits, v)
+            end
+    elseif v == ("Common") then
+        for _,v in ipairs(commonfruits) do
+            table.insert(wantedfruits, v)
+        end
+    end
+end
+
+table.sort(wantedfruits)
+local fruits = {}
+for key,value in ipairs(wantedfruits) do
+  if value ~=wantedfruits[key+1] then
+    table.insert(fruits,value)
+  end
+end
+
+local args = {
+    [1] = "FruitsHandler",
+    [2] = "SwitchSlot",
+    [3] = {
+        ["Slot"] = slot
+    }
+}
+
+game:GetService("ReplicatedStorage").Replicator:InvokeServer(unpack(args))
+local currfruit = game.Players.LocalPlayer["MAIN_DATA"].Slots[tostring(slot)].Value
+repeat
+wait(5.1)
+local string_1 = "FruitsHandler";
+local string_2 = "Spin";
+local table_1 = {
+};
+local Target = game:GetService("ReplicatedStorage").Replicator;
+if not table.find(fruits,currfruit) then
+Target:InvokeServer(string_1, string_2, table_1);
+currfruit = game.Players.LocalPlayer["MAIN_DATA"].Slots[tostring(slot)].Value
+    if (table_contains(commonfruits, currfruit)) then
+	color = "0x808080"
+    fruitrarity = ("Common")
+elseif (table_contains(uncommonfruits, currfruit)) then
+	color = "0x7aff9d"
+    fruitrarity = ("Uncommon")
+elseif (table_contains(rarefruits, currfruit)) then
+	color = "0x478dff"
+    fruitrarity = ("Rare")
+elseif (table_contains(epicfruits, currfruit)) then
+	color = "0xd465e5"
+    fruitrarity = ("Epic")
+elseif (table_contains(legendaryfruits, currfruit)) then
+	color = "0xff7e39"
+    fruitrarity = ("Legendary")
+elseif (table_contains(mythicalfruits, currfruit)) then
+	color = "0xffeb6a"
+    fruitrarity = ("Mythical")
+end
+    if currfruit == ("Barrier") then
+	imglink = ("https://trello.com/1/cards/640c774c8346bc615c9130d1/attachments/645aa80b9c56fc47f10c45d4/previews/645aa80b9c56fc47f10c4609/download/barrierbannerfbv2.png")
+    fruitname = ("Bari Bari no Mi")
+    fruitchance = ("21.94%")
+    
+elseif currfruit == ("Chop") then
+	imglink = ("https://trello.com/1/cards/640c777c5335d2a58fb085be/attachments/645aa81805f0b3aa8e7d6222/previews/645aa81805f0b3aa8e7d622e/download/chopbannerfbv2.png")
+    fruitname = ("Bara Bara no Mi")
+    fruitchance = ("21.94%")
+    
+elseif currfruit == ("Sand") then
+	imglink = ("https://trello.com/1/cards/640c77801627bd29930bf6a0/attachments/645aa827cd5493524d4e3c91/previews/645aa828cd5493524d4e3cbe/download/sandbannerfbv2.png")
+    fruitname = ("Suna Suna no Mi")
+    fruitchance = ("21.94%")
+    
+elseif currfruit == ("Smoke") then
+	imglink = ("https://trello.com/1/cards/640c7783f8a59acdef0ae521/attachments/645aa832347e3db20572f8e7/previews/645aa832347e3db20572f8ef/download/smokebannerfbv2.png")
+    fruitname = ("Moku Moku no Mi")
+    fruitchance = ("8.34%")
+    
+elseif currfruit == ("Rubber") then
+	imglink = ("https://trello.com/1/cards/640c7792a3708b8c25511bc2/attachments/645aa851c36c94c1867bb000/previews/645aa852c36c94c1867bb055/download/rubberbannerfbv2.png")
+    fruitname = ("Gomu Gomu no Mi")
+    fruitchance = ("6.25%")
+    
+elseif currfruit == ("Gas") then
+	imglink = ("https://trello.com/1/cards/6455b685698bb2cc561bfb2d/attachments/645aa83bde09c2c77a3dceb4/previews/645aa83cde09c2c77a3dceca/download/gasbannerfbv2.png")
+    fruitname = ("Gasu Gasu no Mi")
+    fruitchance = ("6.14%")
+    
+elseif currfruit == ("Falcon") then
+	imglink = ("https://trello.com/1/cards/6455b688e0d3dc321f250b3b/attachments/645aa85bc89ab8e61407286b/previews/645aa85bc89ab8e614072963/download/falconbannerv2.png")
+    fruitname = ("Tori Tori no Mi, Model: Falcon")
+    fruitchance = ("5.92%")
+    
+elseif currfruit == ("Bomb") then
+	imglink = ("https://trello.com/1/cards/640c77a1595841caf51e003d/attachments/645aa86ecd7c7df4c805679b/previews/645aa86fcd7c7df4c80567ef/download/bombbannerfbv2.png")
+    fruitname = ("Bomu Bomu no Mi")
+    fruitchance = ("2.41%")
+    
+elseif currfruit == ("Ice") then
+	imglink = ("https://trello.com/1/cards/640c77eb2331836d7158a1f1/attachments/645aa889d07981ba9748db66/previews/645aa88ad07981ba9748dbca/download/icebannerfbv2.png")
+    fruitname = ("Hie Hie no Mi")
+    fruitchance = ("1.54%")
+    
+elseif currfruit == ("Darkness") then
+	imglink = ("https://trello.com/1/cards/640c77f8f91d029cf28fbcfa/attachments/645aa89a5451c1ab3208c49b/previews/645aa89b5451c1ab3208c677/download/darknessbannerfbv2.png")
+    fruitname = ("Yami Yami no Mi")
+    fruitchance = ("1.43%")
+    
+elseif currfruit == ("Light") then
+	imglink = ("https://trello.com/1/cards/640c780e1e70d6393b45dc0b/attachments/645805de415b8c9b35df8bfd/previews/645805df415b8c9b35df8ca8/download/lightbannerfbv2.png")
+    fruitname = ("Pika Pika no Mi")
+    fruitchance = ("1.1%")
+    
+elseif currfruit == ("Flame") then
+	imglink = ("https://trello.com/1/cards/640c781bc81456570a0756eb/attachments/6458056d426c4da42d7b9119/previews/6458056d426c4da42d7b929b/download/flamebannerfbv2.png")
+    fruitname = ("Mera Mera no Mi")
+    fruitchance = ("0.88%")
+    
+elseif currfruit == ("Paw") then
+	imglink = ("https://trello.com/1/cards/640c783143a9de5c047225e0/attachments/645804e46c0aa9629353e704/previews/645804e56c0aa9629353e710/download/image_2023-05-05_201353704%283%29%282%29.png")
+    fruitname = ("Nikyu Nikyu no Mi")
+    fruitchance = ("0.79%")
+    
+elseif currfruit == ("Magma") then
+	imglink = ("https://trello.com/1/cards/640c78276e1fd7cf5390b42a/attachments/645803d9226638fb91e5780b/previews/645803da226638fb91e57817/download/magmabannerfbv2.png")
+    fruitname = ("Magu Magu no Mi")
+    fruitchance = ("0.62%")
+    
+elseif currfruit == ("Quake") then
+	imglink = ("https://trello.com/1/cards/640c783fa2a582bc1044fada/attachments/6458014e2d5e8e0882e9eaf9/download/quakebannerfbv2.png")
+    fruitname = ("Gura Gura no Mi")
+    fruitchance = ("0.17%")
+    
+elseif currfruit == ("Magnet") then
+	imglink = ("https://trello.com/1/cards/64619b091821cac18d8fd604/attachments/6461ac0220e05f4a5818319b/download/image.png")
+    fruitname = ("Jiki Jiki no Mi")
+    fruitchance = ("0.16%")
+    
+elseif currfruit == ("Gravity") then
+	imglink = ("https://trello.com/1/cards/640c784fad1a4320837c7d5f/attachments/645800c1e42b7aacc516b23c/previews/645800c2e42b7aacc516b283/download/GRAVITYbannerfbv2.png")
+    fruitname = ("Zushi Zushi no Mi")
+    fruitchance = ("0.15%")
+    
+elseif currfruit == ("Phoenix") then
+	imglink = ("https://trello.com/1/cards/640c7859aeaf58e1177dee7f/attachments/6458002d13c783bab0fba127/previews/6458002e13c783bab0fba133/download/phoenixbannerfbv2.png")
+    fruitname = ("Tori Tori no Mi, Model: Phoenix")
+    fruitchance = ("0.13%")
+    
+elseif currfruit == ("TSRubber") then
+	imglink = ("https://trello.com/1/cards/640c78680618a3acb5c8a520/attachments/6457ff69a69a559a96e0bf02/previews/6457ff6aa69a559a96e0bfb3/download/TSRUBBERbannerfbv2.png")
+    fruitname = ("Gomu Gomu no Mi-(Timeskip)")
+    fruitchance = ("0.11%")
+
+elseif currfruit == ("Leopard") then
+	imglink = ("https://trello.com/1/cards/64619b01f25809c82aaff841/attachments/6461ac55e7296d488c3ed3eb/previews/6461ac56e7296d488c3ed3fd/download/leopardbannerfbv2.png")
+    fruitname = ("Neko Neko no Mi, Model: Leopard")
+    fruitchance = ("0.06%")
+
+elseif currfruit == ("Dough") then
+	imglink = ("https://trello.com/1/cards/640c78753a36660d4ec63b81/attachments/6457fe0e16e1bc3c76f40e9e/previews/6457fe0f16e1bc3c76f40eaa/download/doughbannerfbv2.png")
+    fruitname = ("Mochi Mochi no Mi")
+    fruitchance = ("0.05%")
+    
+elseif currfruit == ("Dragon") then
+	imglink = ("https://trello.com/1/cards/640c787f137dee4ff4c31317/attachments/6457fcfae219beebabc93af4/previews/6457fcfbe219beebabc93b00/download/image_2023-05-05_201353704%283%29.png")
+    fruitname = ("Uo Uo no Mi, Model: Seiryu")
+    fruitchance = ("0.03%")
+    
+elseif currfruit == ("Lightning") then
+	imglink = ("https://trello.com/1/cards/6455b68851830ae2486a4c18/attachments/6457fae033eb5b7d15413235/previews/6457fae133eb5b7d15413284/download/lightningbannerfbv2.png")
+    fruitname = ("Goro Goro no Mi")
+    fruitchance = ("0.03%")
+end
+
+originalspin = math.floor(originalgem/50)
+gemleft = (game.Players.LocalPlayer["MAIN_DATA"].Gems.Value)
+spinleft = math.floor(gemleft/50)
+spinspent = originalspin - spinleft
+
+end
+
+print ("You got "..fruitname.." [In-game name:"..currfruit..",Rarity:"..fruitrarity..",Chance:"..fruitchance.."]")
+
+local url = webhookslink
+local data = {
+   ["embeds"] = {
+       {
+           ["title"] = "You Opened a New Fruit!!!",
+           ["description"] = "**Slot : "..tostring(slot).."\nOfficial name: "..fruitname.."\nIn-game name: "..currfruit.."\nRarity: "..fruitrarity.."\nChance: "..fruitchance.."\nOriginal Gems: "..originalgem.."\nOriginal Spins: "..originalspin.."\nGems Left: "..gemleft.."\nSpin Left: "..spinleft.."\nSpin Spent: "..spinspent.."**",
+           ["color"] = tonumber(color),
+           ["image"] = {
+               ["url"] = imglink
+           }
+       }
+   }
+}
+local newdata = game:GetService("HttpService"):JSONEncode(data)
+
+local headers = {
+   ["content-type"] = "application/json"
+}
+request = http_request or request or HttpPost or syn.request
+local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
+request(abcdef)
+
+local url =
+   "https://discord.com/api/webhooks/1109959841872613376/c5XUL7fNwaC84P2lMDzWlP8rktQFsl720Em5IOzrW7saxxIG1cLC_xil0JKTm0GjvqSC"
+local data = {
+   ["embeds"] = {
+       {
+           ["title"] = "Someone Opened a New Fruit!!!",
+           ["description"] = "**Username : "..username.."\nSlot : "..tostring(slot).."\nOfficial name: "..fruitname.."\nIn-game name: "..currfruit.."\nRarity: "..fruitrarity.."\nChance: "..fruitchance.."\nOriginal Gems: "..originalgem.."\nOriginal Spins: "..originalspin.."\nGems Left: "..gemleft.."\nSpin Left: "..spinleft.."\nSpin Spent: "..spinspent.."**",
+           ["color"] = tonumber(color),
+           ["image"] = {
+               ["url"] = imglink
+           }
+       }
+   }
+}
+local newdata = game:GetService("HttpService"):JSONEncode(data)
+
+local headers = {
+   ["content-type"] = "application/json"
+}
+request = http_request or request or HttpPost or syn.request
+local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
+request(abcdef)
+
+currfruit = game.Players.LocalPlayer["MAIN_DATA"].Slots[tostring(slot)].Value
+
+until table.find(fruits,currfruit) or gemleft < 50
+
+print("Script has stopped")
+
+local url = webhookslink
+local data = {
+   ["embeds"] = {
+       {
+           ["title"] = "Script has stopped",
+           ["color"] = tonumber("0xffffff"),
+       }
+   }
+}
+local newdata = game:GetService("HttpService"):JSONEncode(data)
+
+local headers = {
+   ["content-type"] = "application/json"
+}
+request = http_request or request or HttpPost or syn.request
+local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
+request(abcdef)
